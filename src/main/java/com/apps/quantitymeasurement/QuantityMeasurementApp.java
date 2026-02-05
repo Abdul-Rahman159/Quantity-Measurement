@@ -36,11 +36,5 @@ public class QuantityMeasurementApp {
         System.out.println("\n3. Addition Checks:");
         System.out.println("   1 ft + 12 inches = " + feet.add(inches) + " ft");
         System.out.println("   1 yd + 3 ft = " + yard.add(new Length(3.0, LengthUnit.FEET)) + " yd");
-
-        // Static method usage
-        System.out.println("\n4. Static Methods:");
-        System.out.println("   Convert 2 ft to inches: " + Length.convert(2.0, LengthUnit.FEET, LengthUnit.INCHES));
-        System.out.println("   Add 1 ft + 6 inches (in yards): " +
-                Length.add(feet, new Length(6.0, LengthUnit.INCHES), LengthUnit.YARDS));
     }
 }

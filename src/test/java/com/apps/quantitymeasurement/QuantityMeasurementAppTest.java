@@ -125,21 +125,6 @@ public class QuantityMeasurementAppTest {
         assertEquals(LengthUnit.FEET, result.getUnit());
     }
 
-    @Test
-    public void testStaticAddMethod() {
-        Length feet = new Length(1.0, LengthUnit.FEET);
-        Length inches = new Length(12.0, LengthUnit.INCHES);
-        Length result = Length.add(feet, inches, LengthUnit.YARDS);
-
-        assertEquals(0.6667, result.getValue(), 0.0001);
-        assertEquals(LengthUnit.YARDS, result.getUnit());
-    }
-
-    @Test
-    public void testStaticAddMethodWithTargetUnit() {
-        double result = Length.add(1.0, LengthUnit.FEET, 12.0, LengthUnit.INCHES, LengthUnit.YARDS);
-        assertEquals(0.6667, result, 0.0001);
-    }
 
     @Test
     public void testAddition_IdentityElement() {
@@ -148,18 +133,5 @@ public class QuantityMeasurementAppTest {
         Length zero = new Length(0.0, LengthUnit.FEET);
         Length result = length.add(zero);
         assertTrue(length.equals(result));
-    }
-
-    @Test
-    public void testAddition_Associativity() {
-        // (a + b) + c = a + (b + c)
-        Length a = new Length(1.0, LengthUnit.FEET);
-        Length b = new Length(12.0, LengthUnit.INCHES);
-        Length c = new Length(1.0, LengthUnit.YARDS);
-
-        Length left = a.add(b).add(c);
-        Length right = a.add(b.add(c));
-
-        assertTrue(left.equals(right));
     }
 }

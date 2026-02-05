@@ -41,25 +41,6 @@ public class Length {
         return new Length(Math.round(sumInThisUnit * 10000.0) / 10000.0, unit);
     }
 
-    // Static addition with target unit
-    public static Length add(Length l1, Length l2, LengthUnit targetUnit) {
-        if (l1 == null || l2 == null || targetUnit == null) {
-            throw new IllegalArgumentException("Arguments cannot be null");
-        }
-
-        double sumInInches = l1.toInches() + l2.toInches();
-        double sumInTarget = sumInInches / targetUnit.getConversionFactorToInch();
-
-        return new Length(Math.round(sumInTarget * 10000.0) / 10000.0, targetUnit);
-    }
-
-    // Static addition with raw values (REQUIRED for testStaticAddMethodWithTargetUnit)
-    public static double add(double v1, LengthUnit u1, double v2, LengthUnit u2, LengthUnit targetUnit) {
-        Length l1 = new Length(v1, u1);
-        Length l2 = new Length(v2, u2);
-        return add(l1, l2, targetUnit).getValue();
-    }
-
     // Equality check
     @Override
     public boolean equals(Object obj) {
